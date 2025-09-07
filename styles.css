@@ -1,0 +1,344 @@
+/* === Global Styles === */
+body {
+  margin: 0;
+  font-family: Calibri, sans-serif;
+  background: #111;        /* Dark background */
+  color: #eee;             /* Light text */
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #eee;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Header / Fullscreen Title === */
+.header {
+  height: 100vh;           /* Full screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* move content to the top */
+  align-items: flex-start;     /* left align */
+  text-align: left;
+  padding: 80px 15px 0;        /* top padding pushes text down */
+  background: #111;
+}
+
+.title {
+  font-size: 4.2em;
+  margin: 0;
+  line-height: 1.1;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #eaeaea;
+  max-width: 800px;            /* constrain width */
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 1.1em;
+  color: #ccc;
+  max-width: 800px;            /* constrain width */
+}
+
+/* === Hamburger Navigation === */
+.navbar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  z-index: 10;
+}
+
+.hamburger {
+  width: 28px;
+  cursor: pointer;
+  display: block;
+  z-index: 20;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  margin: 4px 0;
+  background: #eee;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  display: none;
+  background: #111;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 180px;
+  border: 1px solid #333;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links li {
+  padding: 8px 15px;
+}
+
+.nav-links li a {
+  font-weight: bold;
+}
+
+/* === Artist Sections === */
+.artist-page {
+  padding: 40px 15px;       /* smaller section padding */
+  max-width: 850px;
+  margin: 0 auto;
+  scroll-margin-top: 50px;
+}
+
+.artist-name {
+  font-size: 2.6em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.artist-dates {
+  font-size: 1em;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+/* === Essay Text === */
+.essay {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.essay p {
+  margin-bottom: 1.2em;   /* tighter spacing */
+}
+
+.essay figure {
+  margin: 1.5em 0;        /* reduced figure spacing */
+}
+
+.essay figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.essay figcaption {
+  font-size: 0.8em;
+  color: #aaa;
+  margin-top: 0.4em;
+  text-align: center;
+}
+
+/* === Floating Images === */
+.essay figure[style*="float: left"] {
+  float: left;
+  margin: 0 15px 15px 0;   /* tighter float margins */
+  max-width: 280px;
+}
+
+.essay figure[style*="float: right"] {
+  float: right;
+  margin: 0 0 15px 15px;   /* tighter float margins */
+  max-width: 280px;
+}
+
+/* === Side by Side Flex Images === */
+.essay > div[style*="display: flex"] {
+  display: flex;
+  gap: 15px;               /* reduced gap */
+  flex-wrap: wrap;
+}
+
+.essay > div[style*="display: flex"] figure {
+  flex: 1;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.85em;
+  color: #888;
+  background: #111;
+  margin-top: 30px;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .essay > div[style*="display: flex"] {
+    flex-direction: column;
+  }
+
+  .artist-name {
+    font-size: 2.2em;
+  }
+
+  .title {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0 10px;
+  }
+
+  .nav-links {
+    width: 140px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Scroll Reveal Animation === */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Back to Top Button === */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-top::before {
+  .back-to-top::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid #fff; /* arrow color */
+  display: block;
+  transition: transform 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.back-to-top:hover::before {
+  border-bottom-color: #111; /* changes on hover */
+  transform: translateY(-3px);
+}
+
+.back-to-top:active::before {
+  transform: translateY(-1px) scale(1.1);
+}
+
+.back-to-top:hover {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.back-to-top:hover::before {
+  color: #111;
+  transform: translateY(-3px);
+}
+
+.back-to-top:active {
+  background: #fff;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+.back-to-top:active::before {
+  color: #111;
+  transform: translateY(-1px) scale(1.1);
+}
+
+
+.site-about {
+  max-width: 900px;
+  margin: 10px 60px 0 60px; /* aligns with your header spacing */
+  color: #444;
+  font-size: 1.05em;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+/* small-screen adjustment */
+@media (max-width: 600px) {
+  .site-about {
+    margin: 10px 20px 0 20px;
+    font-size: 1em;
+  }
+}
+
+.site-about {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left; /* keeps main text left aligned */
+}
+
+.about-header {
+  text-align: right; /* moves subtitle to the right */
+}
+
+.about-subtitle {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+/* Pull quote styling - larger, bolder, indented */
+.pull-quote {
+  font-size: 1.8em;        /* much larger than body text */
+  font-weight: 800;        /* extra bold */
+  margin: 1em 3em;         /* indentation on both sides */
+  line-height: 1.4;        /* keeps readability */
+  font-style: italic;      /* optional, can remove if you want */
+  color: #111;             /* darker for strong contrast */
+}
+
+display: inline-block;
